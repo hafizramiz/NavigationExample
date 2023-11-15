@@ -1,0 +1,12 @@
+package com.example.navigationexample.ui.theme
+
+fun main() {
+    val result = buildString {
+        append("Merhaba, ")
+        append("Dünya!")
+    }
+    println(result)
+
+}
+
+buildString metotu string olusturmak icin kullanilan bir metotdur.

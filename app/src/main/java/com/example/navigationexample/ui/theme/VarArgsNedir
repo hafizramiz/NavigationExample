@@ -1,0 +1,21 @@
+Tabii ki, Kotlin'deki vararg (variable-length argument) kelimesi,
+bir fonksiyona değişken sayıda argüman (parametre) geçmenizi sağlayan
+bir özelliktir. vararg kelimesi, bir fonksiyonun
+ belirli bir türde sıfır veya daha fazla argüman alabilmesini sağlar.
+ Bu argümanlar, bir dizi (array) olarak işlenir.
+
+ fun toplam(vararg sayilar: Int): Int {
+     var toplam = 0
+     for (sayi in sayilar) {
+         toplam += sayi
+     }
+     return toplam
+ }
+
+ fun main() {
+     val sonuc1 = toplam(1, 2, 3, 4, 5)
+     val sonuc2 = toplam(10, 20, 30)
+
+     println("Sonuç 1: $sonuc1")
+     println("Sonuç 2: $sonuc2")
+ }

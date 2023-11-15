@@ -1,0 +1,116 @@
+Once dependencies ekle
+Bir tane Navigation package ac
+bir composable icinde navigation val navController= rememberNavController yaz
+Navigation() {
+    val navController=rememberNavController()
+    // Daha sonra NavHost olustur.
+   NavHost (
+   // navhost icinde start destination vercem, navcontroller vercem.
+   ){
+   // Simdi bunun icinde composable'lari tanimliyacam. Birinci composable bu olacak
+       composable(route=Screen.MainScreen.route){
+            // Bu rota verildiginde bu ekrana gitmesini soyliycem.
+            // Burda gitmesini istedigim ekran MAIN SCREEN OLDUGU ICIN ONU VERDIM
+            MainScreen(navController:navController)
+            // Main screen benden bir parametre bekledigi icin onu da buraya verdim.
+            // BU parametreyi neden verdim? Cunku Main Screen'de navController nesnesini kullanarak
+            // bir navigation yapacagim.
+       }
+       // Ikinci composable: Burda argumant'da gonderebiliyorum. composable icine bakarsam ikinci secenek olarak
+       // argumant da var. Simdi buna argumant da eklemeyi deniycem. Bunun icin arguments isimli parametreyi vermem gerekiyor.
+       composable(
+       navController.navigate metotu navigation islemini yapan metottur. Ona bir route'i veririz o ilgili ekrani dondurur
+       // Peki spefisik olarak bu route gelince bu ekrani dondur dememize yarayan sey nedir. Onceden composable icinde
+       // tanimladigimiz ekranlardir. composable iste bu ise yariyor.Navhost icinde composable'lari tanimladiysan
+       // geriye navController ile navigate etmek kaliyor. Onu nasil yapariz. navController.navigate() icine gitmek istedigimiz
+       // route'i veririz. Peki route'i verdik ve o ekrana gitti. Ya argument de gondermek istersek?O zaman
+       route+ "/{argument ismi vermemiz gerekiyor.}". Ornek olarak.
+       route=Screen.DetailScreen.route+"/{name}    /// boyle yaparak mandatory yani zorunlu argument yapmis olduk.
+       route=Screen.DetailScreen.route+"/{name}/{age}"   // burda istersek birden fazla da gonderebiliriz.
+       // Peki optional argument gondermek istersek? O zaman da boyle olacak.
+       route=Screen.DetailScreen.route+"?name={name}  // Bu durumda asagida yazdigim default value'i okuyacak artik.
+       /// Burda bu route yazilinca
+                    route=Screen.DetailScreen.route,
+                    arguments= listOf(
+                        navArgument("name"){    // argumanin adini yazdim.
+                            type=NavType.StringType     /// argumanin tipini yazdim
+                            defaultValue= "Hafiz"       // argumanin default degerini yazdim.
+                            nullable=true    // gonderdigim arguman null olabilir.
+                            }
+                        )
+                    ){
+                   // Bu rota verildiginde bu ekrana gitmesini soyliycem.
+                   // Burda gitmesini istedigim ekran Detail SCREEN OLDUGU ICIN ONU VERDIM
+
+            // DetailScreen benden bir parametre bekliyor. Name isimli parametre. Onu ben bu ekrana vermem gerekiyor.
+           // entry.arguments?.getString("name") diyerek ilgili parametreyi elde ediyorum. daha sonra onu buraya veriyorum
+           val name= entry.arguments?.getString("name")
+            DetialScreen(name=name)
+
+           // Burda ayrica ilgili parametre ile view modele gidip ona gore veriyi cekip elde ettigim
+            // nesneyi DetailScreen'e verebilirim
+            ornek olsun diye
+            val MyModel by viewModel.fetchData("name")
+            DetailScreen(myModel=MyModel)   // Ornek olmasi icin yaptim.Cunku BusScheduleApp'de boyle yapilmis.
+              }
+         }
+    }
+
+Baska package ac orda da bir sealed class olustur.
+// route parametresi primary constructordadir. Cunku required parametre yaptim. Yani zorunlu kildim.
+sealed class Screen(val route: Stirng){
+    object MainScreen: Screen("main_screen")
+    object DetailScreen: Screen("detail_screen")
+
+    // Burda baska bir metot tanimla
+    // Burdaki vararg keywordu birden fazla istedigin kadar parametre gecmemizi saglar. Tipi string olacak.
+    // bir de olabilir. daha da fazla da olabilir.
+    // SImdi baska bir metot yazcam. Bu metot parametre alacak. Birden fazla da alabilir. Burda varargs yazmamin sebebi bu
+    // zaten. Kac tane parametre alacagini bilmedigim icin varargs yazdim. Birden fazla arguman da gonderebilirim.
+    // Sımdı gelen argumanlari bir String yapcam. Normalde birden fazla arguman gondermek icin ne yapiyorduk?
+    // route=Screen.DetailScreen.route+"/{name}/{age}"  simdi bu metot'u bu sekilde dondurecek hale getircem.
+    fun withArgs(vararg args:String): String {
+        return buildString{
+                append(route)       // olusturdugum String'e route ekledim. Simdi de argumanlari eklemem gerekiyor.
+                args.forEach(){arg->
+                    append (arg)
+                     }      // birden fazla arguman olabilecegi icin forEach yaparak hepsini ekledim.
+            }
+    }
+    // Bu metot bir String dondurecek.Onu da route degiskenine vercem.
+}
+Burdaki sealed class'i anlamaya calis
+Sonra navhost'ta burdaki sealed class'lari cagircam ve start destination'a onu vercem.
+
+Simdi Ekranlari yapmaya basliyacam
+
+// Main Screen'e burda navController parameteresi vermistim. SImdi onu kullanarak navigate yapcam.
+fun MainScreen(navController: NavController){
+var text by remember{
+    mutableStateof("")
+        }
+    Column(){
+    // Burda bir TextField olacak ordaki veriyi gondermeyi deniycem.
+    onvalueChange'ne bunu ver.
+    Daha sonra bir buton yap.
+    Buton(
+        // Butonun onClick metotu var onu doldurcam.
+        onClick(){
+            navController.navigate()
+            // navController.navigate yazdigim zaman navigate icine route vermem gerekiyor. Hangi route'a gidecegini
+            soyluyorum. Bu sekilde ekrana gitmesini sagladik. Peki nasil parametre gonderecegiz.
+            }
+        ){
+    }
+    }
+}
+
+// Daha sonra bir DetialScreen olustur. Bu ekran benden bir argumant bekliyor.
+// Yani bu ekrana gelirken bir argumant de gonderecegim. name isimli String istiyor,
+fun DetailsScreen(name:String){
+    Box(){
+    // Ordan aldigim argumanti burda basdiracagim.
+        Text("hello name: ${name}")
+        }
+    }
+Once ekrana gidecek mi diye kontrol et. Daha sonra parametre eklemeyi dene
