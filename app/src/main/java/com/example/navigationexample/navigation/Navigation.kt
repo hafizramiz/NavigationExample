@@ -50,7 +50,6 @@ fun Navigation() {
         // Buraya kadar her sey tamam. Peki biz argumani nasil verecegiz.Yani HomeScreen'de
     // navController.navigate yapan buton argumani ona verebilmek icin route'in da arguman
     // alabiliyor olmasi lazim. Cunku orda biz route'i cagiriyoruz, Simdi yukardakini oku.
-
     }
 }
 
