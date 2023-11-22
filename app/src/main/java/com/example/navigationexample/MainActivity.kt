@@ -71,9 +71,9 @@ fun HomeScreen(navController: NavController) {
             onClick = {
                 // "${BusScheduleScreens.RouteSchedule.name}/$busStopName"
             //navController.navigate("${Screens.DetailScreen.route}/${surname}")
-            navController.navigate("${Screens.DetailScreen.route}/${surname}")
+            // navController.navigate("${Screens.DetailScreen.route}/${surname}")
                 // BUSEKILDE YAZMAK YERINE SEALED CLASS'I ARGUMAN ALABILIR HALE GETIRCEM.
-
+                navController.navigate(route = Screens.DetailScreen.withArg(surname),)
         }) {
             Text(text = "Go to Detial Screen")
         }
@@ -82,7 +82,9 @@ fun HomeScreen(navController: NavController) {
 
 @Composable
 fun DetailScreen(surname:String?) {
-    Column {
+    Column (verticalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally){
         Text(text = "Details Screen")
         Text(text = "Merhaba $surname")
     }

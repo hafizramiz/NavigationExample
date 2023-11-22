@@ -36,7 +36,7 @@ fun Navigation() {
         // bu route cagirildigi yerde bir arguman girilmesi gerektigini de ekliycem.
         // ilk hali boyleydi: composable(route=Screens.DetailScreen.route,Degistirdim. argument de
 //        alabilecek sekle getirdim.Ozetle bu route'i arguman alabilir hale getirdim.
-        composable(route=Screens.DetailScreen.withArg("mySurname"),
+        composable(route=Screens.DetailScreen.route+"/{mySurname}",
             arguments = listOf(navArgument("mySurname"){
                 type= NavType.StringType
                 nullable=true
@@ -50,6 +50,7 @@ fun Navigation() {
         // Buraya kadar her sey tamam. Peki biz argumani nasil verecegiz.Yani HomeScreen'de
     // navController.navigate yapan buton argumani ona verebilmek icin route'in da arguman
     // alabiliyor olmasi lazim. Cunku orda biz route'i cagiriyoruz, Simdi yukardakini oku.
+
     }
 }
 

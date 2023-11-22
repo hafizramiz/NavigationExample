@@ -11,7 +11,7 @@ sealed class Screens(val route:String) {
 //    }
     fun withArg(name:String):String{
         // ikinci paramter eklemek istersem
-        return route+"/{$name}"
+        return route+"/$name"
     }
     object HomeScreen:Screens("HomeScreen")
     object DetailScreen:Screens("DetailScreen")
