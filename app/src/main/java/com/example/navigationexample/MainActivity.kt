@@ -80,6 +80,7 @@ fun HomeScreen(navController: NavController) {
     }
 }
 
+
 @Composable
 fun DetailScreen(surname:String?) {
     Column (verticalArrangement = Arrangement.Center,
