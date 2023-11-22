@@ -8,6 +8,7 @@ Navigation() {
    // navhost icinde start destination vercem, navcontroller vercem.
    ){
    // Simdi bunun icinde composable'lari tanimliyacam. Birinci composable bu olacak
+
        composable(route=Screen.MainScreen.route){
             // Bu rota verildiginde bu ekrana gitmesini soyliycem.
             // Burda gitmesini istedigim ekran MAIN SCREEN OLDUGU ICIN ONU VERDIM
@@ -25,7 +26,7 @@ Navigation() {
        // geriye navController ile navigate etmek kaliyor. Onu nasil yapariz. navController.navigate() icine gitmek istedigimiz
        // route'i veririz. Peki route'i verdik ve o ekrana gitti. Ya argument de gondermek istersek?O zaman
        route+ "/{argument ismi vermemiz gerekiyor.}". Ornek olarak.
-       route=Screen.DetailScreen.route+"/{name}    /// boyle yaparak mandatory yani zorunlu argument yapmis olduk.
+       route=Screen.DetailScreen.route+"/{name}"   /// boyle yaparak mandatory yani zorunlu argument yapmis olduk.
        route=Screen.DetailScreen.route+"/{name}/{age}"   // burda istersek birden fazla da gonderebiliriz.
        // Peki optional argument gondermek istersek? O zaman da boyle olacak.
        route=Screen.DetailScreen.route+"?name={name}  // Bu durumda asagida yazdigim default value'i okuyacak artik.
