@@ -6,13 +6,13 @@ This repository serves as a concise guide on implementing navigation in Jetpack 
 implementation("androidx.navigation:navigation-compose:2.7.5")
 2. Create a NavHost, define a NavGraph, and use the NavController to navigate between screens.
 
-@Composable
+` @Composable
 fun Navigation() {
     // ...
     // Define your screens and navigation logic here.
     // ...
 }
-
+`
 Connect with me on LinkedIn for further discussions or inquiries.
 
 Happy coding!
