@@ -39,3 +39,5 @@ sealed class Ekranlar(val route: String){
 
 
 // Development branchte degisiklik yaptim
+
+/// Yeni seyler ekledim development branch e ve pull request attim
