@@ -37,4 +37,4 @@ sealed class Ekranlar(val route: String){
     object DetaySayfa:Ekranlar(route = "DetaySayfa")
 }
 
-//  Developmnt branch
+//  Developmnt branch de degisiklik yaptim.
