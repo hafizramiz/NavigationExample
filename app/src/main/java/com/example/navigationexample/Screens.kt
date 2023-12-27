@@ -37,3 +37,5 @@ sealed class Ekranlar(val route: String){
     object DetaySayfa:Ekranlar(route = "DetaySayfa")
 }
 
+
+// Changed development branch
