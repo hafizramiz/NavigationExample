@@ -21,8 +21,19 @@ fun main() {
     val nesne=Screens.DetailScreen.route+"/{mySurname}"
     println("nesne: $nesne")
     println("result: ${Screens.HomeScreen.withArg("surname")}")
+
+    val anasayfa:String=Ekranlar.Anasayfa.route
+    println("ekran:${anasayfa}")
+
 }
 
 // Navigation bolumunde bunu bu sekilde
 // composable(route=Screens.DetailScreen.route+"/{mySurname}", yazmak yerine daha da kullanisli hale
 //getircem. Bunu da withArgs ile yapcam.
+
+
+sealed class Ekranlar(val route: String){
+    object Anasayfa:Ekranlar("Anasayfa")
+    object DetaySayfa:Ekranlar(route = "DetaySayfa")
+}
+

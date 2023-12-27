@@ -2,7 +2,6 @@ Once dependencies ekle
 Bir tane Navigation package ac
 bir composable icinde navigation val navController= rememberNavController yaz
 Navigation() {
-
     val navController=rememberNavController()
     // Daha sonra NavHost olustur.
    NavHost (
@@ -34,10 +33,10 @@ Navigation() {
        /// Burda bu route yazilinca
                     route=Screen.DetailScreen.route,
                     arguments= listOf(
-                        navArgument("name"){    // argumanin adini yazdim.
+                        navArgument("name"){             // argumanin adini yazdim.
                             type=NavType.StringType     /// argumanin tipini yazdim
                             defaultValue= "Hafiz"       // argumanin default degerini yazdim.
-                            nullable=true    // gonderdigim arguman null olabilir.
+                            nullable=true               // gonderdigim arguman null olabilir.
                             }
                         )
                     ){

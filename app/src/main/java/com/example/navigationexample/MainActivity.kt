@@ -74,6 +74,7 @@ fun HomeScreen(navController: NavController) {
             // navController.navigate("${Screens.DetailScreen.route}/${surname}")
                 // BUSEKILDE YAZMAK YERINE SEALED CLASS'I ARGUMAN ALABILIR HALE GETIRCEM.
                 navController.navigate(route = Screens.DetailScreen.withArg(surname),)
+                navController.navigate(route = Screens.DetailScreen.route)
         }) {
             Text(text = "Go to Detial Screen")
         }
