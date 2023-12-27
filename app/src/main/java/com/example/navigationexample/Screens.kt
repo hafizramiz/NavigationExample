@@ -37,7 +37,4 @@ sealed class Ekranlar(val route: String){
     object DetaySayfa:Ekranlar(route = "DetaySayfa")
 }
 
-
-// Development branchte degisiklik yaptim
-
-/// Yeni seyler ekledim development branch e ve pull request attim
+//  Developmnt branch
