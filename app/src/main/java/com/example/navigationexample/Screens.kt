@@ -38,4 +38,4 @@ sealed class Ekranlar(val route: String){
 }
 
 
-// Changed development branch
+// Development branchte degisiklik yaptim
